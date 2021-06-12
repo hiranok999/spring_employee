@@ -14,25 +14,22 @@ import lombok.NoArgsConstructor;
 @Data
 public class UserModel implements UserDetails {
 
-    private String id;
+	private static final long serialVersionUID = -2164450527129740516L;
+
+	private String id;
 
     private String name;
 
     private String password;
-
-    private boolean enabled;
     
     private Integer authority;
+
+    private boolean enabled;
 
     //#region UserDetailsインターフェイスのメソッド
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
     }
 
     @Override
@@ -59,19 +56,4 @@ public class UserModel implements UserDetails {
     public boolean isEnabled() {
         return this.enabled;
     }
-    //#endregion 
-
-    //#region 追加メソッド
-    public String getName(){
-        return this.name;
-    }
-
-    public Integer getAuthority() {
-        return authority;
-    }
-
-    public void setAuthority(Integer authority) {
-        this.authority = authority;
-    }
-    //#endregion 
 }

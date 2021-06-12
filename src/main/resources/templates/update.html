@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/base}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
+<script type="text/javascript" th:src="@{webjars/jquery/3.5.0/jquery.min.js}"></script>
+<title>検索画面</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<form id="update" th:action="@{/updateResult}" method="POST" th:object="${updateForm}">
+				<input type="hidden" name="old_id" th:value="${old_id}">
+				<input type="hidden" name="old_name" th:value="${old_name}">
+				<input type="hidden" name="old_birthdate" th:value="${old_birthdate}">
+				<input type="hidden" name="old_division" th:value="${old_division}">
+			<table>
+				<tr>
+					<td th:text="社員番号："></td>
+					<td><input type="text" th:field="*{id}"></td>
+					<td th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></td>
+				</tr>
+				<tr>
+					<td th:text="氏名："></td>
+					<td><input type="text" th:field="*{name}"></td>
+					<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+				</tr>
+				<tr>
+					<td th:text="生年月日："></td>
+					<td><input type="text" th:field="*{birthdate}"></td>
+					<td th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}"></td>
+				</tr>
+				<tr>
+					<td th:text="部署："></td>
+					<td><input type="text" th:field="*{division}"></td>
+				</tr>
+				<tr>
+					<td th:text="あ："></td>
+					<td><input type="text" th:field="*{a['old']}"></td>
+					<td><input type="text" th:field="*{a['new']}"></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="更新"></td>
+				</tr>
+			</table>
+		</form>
+		<p th:if="${msg != null}" th:utext="${msg}"></p>
+	</div>
+	<div layout:fragment="footer">
+		<p>
+			<a th:href="@{/search}">戻る</a>
+		</p>
+	</div>
+</body>
+</html>

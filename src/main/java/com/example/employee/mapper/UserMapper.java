@@ -12,7 +12,8 @@ import com.example.employee.model.UserModel;
 @Mapper
 public interface UserMapper {
 
-    // 全件取得
-    @Select("SELECT id, name, password, enabled, authority FROM public.t_user where name = #{name}")
-    public UserModel selectByUser(@Param("name") String name);
+    // 1ユーザー取得
+    @Select("SELECT * FROM public.t_user where name = #{name}")
+    public UserModel selectUserByName(@Param("name") String name);
+    
 }

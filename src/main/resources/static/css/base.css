@@ -1,0 +1,21 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    height: 70px; 
+    text-align: center; 
+    background-color: #eee;
+}
+.content{
+    flex: 1;
+    background-color: #eee;
+    text-align: center;
+    margin: 10px 0 10px 0;
+}
+.footer{
+    height: 70px;
+    text-align: center;
+    background-color: #eee;
+}

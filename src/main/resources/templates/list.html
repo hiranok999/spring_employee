@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
+<link th:href="@{webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/base.css}" rel="stylesheet" type="text/css">
+<script th:href="@{webjars/jquery/3.5.0/js/jquery.min.js}"></script>
+<script th:href="@{webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+	<div th:fragment="timeline" th:remove="tag">
+		<table th:id="empTable"> 
+			<tr>
+				<td th:if="${result} neq null" th:text="'検索結果' + ${result} + '件'"></td>
+			</tr>
+			<tr>
+				<th>社員番号</th>
+				<th>氏名</th>
+				<th>生年月日</th>
+				<th>部署</th>
+			</tr>
+			<tr th:class="empList" th:each="employee : ${employees}" th:object="${employee}">
+				<td class="id" th:text="*{id}"></td>
+				<td class="name" th:text="*{name}"></td>
+				<td class="birthdate" th:text="*{birthdate}"></td>
+				<td class="division" th:text="*{division}"></td>
+				<td>
+					<form th:action="@{/update}" method="POST">
+						<input type="hidden" name="id" th:value="*{id}">
+						<input type="hidden" name="name" th:value="*{name}">
+						<input type="hidden" name="birthdate" th:value="*{birthdate}">
+						<input type="hidden" name="division" th:value="*{division}">
+						<input type="submit" value="更新">
+					</form>
+				</td>
+				<td>
+					<input type="button" class="ajax_delete" value="削除" th:name="*{id}">
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{    
+  "strict":true,
+  "indent":4,
+  "maxlen":100,
+  "unused":true,
+  "jquery":true,
+  "laxcomma": true,
+  "laxbreak":true,
+  "globals":{
+     "window":true,
+     "document":true,
+     "mtips":true
+  }
+}

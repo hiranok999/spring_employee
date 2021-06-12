@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/base}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
+<title>登録画面</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<form th:action="@{/register}" th:object="${employeeModel}" method="Post">
+			<table>
+				<tr>
+					<td><span>社員番号：</span><input type="text" th:field="*{id}"></td>
+					<td th:if="${#fields.hasErrors('*{id}')}" th:errors="*{id}"></td>
+				</tr>
+				<tr>
+					<td><span>氏名：</span><input type="text" th:field="*{name}"></td>
+					<td th:if="${#fields.hasErrors('*{name}')}" th:errors="*{name}"></td>
+				</tr>
+				<tr>
+					<td><span>生年月日：</span><input type="text" th:field="*{birthdate}"></td>
+					<td th:if="${#fields.hasErrors('*{birthdate}')}" th:errors="*{birthdate}"></td>
+				</tr>
+				<tr>
+					<td><span>部署：</span><input type="text" th:field="*{division}"></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="登録"></td>
+				</tr>
+			</table>
+		</form>
+		<p th:text="${result}"></p>
+	</div>
+	<div layout:fragment="footer">
+		<p>
+			<a th:href="@{/}">戻る</a>
+		</p>
+	</div>
+</body>
+</html>
