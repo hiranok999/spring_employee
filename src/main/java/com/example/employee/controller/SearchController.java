@@ -58,7 +58,7 @@ public class SearchController {
 	@GetMapping("/allListResult")
 	public ModelAndView allEmployee(@ModelAttribute EmpListModel empListModel, ModelAndView mav) {
 
-		// 従業員テーブルからレコードを削除
+		// 従業員テーブルからレコードを取得
 		List<EmployeeModel> empList = employeeService.loadAllEmployee();
 		
 		// 社員番号の昇順でソート
@@ -92,7 +92,7 @@ public class SearchController {
 
 		mav.addObject("employees", empList);
 		mav.addObject("result", empList.size());
-		mav.setViewName("/list :: timeline");
+		mav.setViewName("list");
 
 		return mav;
 	}
