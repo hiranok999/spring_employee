@@ -66,7 +66,7 @@ public class SearchController {
 
 		mav.addObject("employees", empList);
 		mav.addObject("result", empList.size());
-		mav.setViewName("/list :: timeline");
+		mav.setViewName("list");
 
 		return mav;
 	}
@@ -92,7 +92,7 @@ public class SearchController {
 
 		mav.addObject("employees", empList);
 		mav.addObject("result", empList.size());
-		mav.setViewName("redirect:/list");
+		mav.setViewName("list");
 
 		return mav;
 	}
