@@ -21,17 +21,17 @@
 				<th>生年月日</th>
 				<th>部署</th>
 			</tr>
-			<tr th:class="empList" th:each="employee : ${employees}" th:object="${employee}">
+			<tr th:class="empList" th:each="employee, empStat : ${employees}" th:object="${employee}">
 				<td class="id" th:text="*{id}"></td>
 				<td class="name" th:text="*{name}"></td>
 				<td class="birthdate" th:text="*{birthdate}"></td>
 				<td class="division" th:text="*{division}"></td>
 				<td>
-					<form th:action="@{/update}" method="POST">
-						<input type="hidden" name="id" th:value="*{id}">
-						<input type="hidden" name="name" th:value="*{name}">
-						<input type="hidden" name="birthdate" th:value="*{birthdate}">
-						<input type="hidden" name="division" th:value="*{division}">
+					<form th:action="@{/update}" th:object="${updateForms}" method="POST">
+						<input type="hidden" name="updateForms[0].id" th:value="${employee.id}">
+						<input type="hidden" name="updateForms[0].name" th:value="${employee.name}">
+						<input type="hidden" name="updateForms[0].birthdate" th:value="${employee.birthdate}">
+						<input type="hidden" name="updateForms[0].division" th:value="${employee.division}">
 						<input type="submit" value="更新">
 					</form>
 				</td>

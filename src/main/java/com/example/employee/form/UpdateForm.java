@@ -1,7 +1,5 @@
 package com.example.employee.form;
 
-import java.util.Map;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
@@ -23,6 +21,17 @@ public class UpdateForm {
 	private String birthdate;
 	
 	private String division;
+	
+	public boolean equals(UpdateForm object) {
+		boolean result = false;
 
-	private Map<String, String> a;
+		if (this.getId().equals(object.getId()) && this.getName().equals(object.getName())
+				&& this.getBirthdate().equals(object.getBirthdate())
+				&& this.getDivision().equals(object.getDivision())) {
+			result = true;
+		}
+
+		return result;
+	}
+
 }

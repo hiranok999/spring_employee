@@ -31,7 +31,7 @@ public class SearchController {
 	}
 	
 	@Autowired
-	private EmployeeService employeeService;
+	EmployeeService employeeService;
 
 	// 検索画面（検索ボタン押下）
 	@GetMapping("/searchResult")
@@ -44,6 +44,10 @@ public class SearchController {
 
 		// 従業員テーブル検索
 		List<EmployeeModel> empData = employeeService.loadEmployee(searchForm);
+
+		// 社員番号の昇順でソート
+		Collections.sort(empData);
+
 		model.addAttribute("result", empData.size());
 		model.addAttribute("employees", empData);
 		
