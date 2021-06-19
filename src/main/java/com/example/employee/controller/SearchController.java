@@ -92,7 +92,7 @@ public class SearchController {
 
 		mav.addObject("employees", empList);
 		mav.addObject("result", empList.size());
-		mav.setViewName("list");
+		mav.setViewName("redirect:/list");
 
 		return mav;
 	}
