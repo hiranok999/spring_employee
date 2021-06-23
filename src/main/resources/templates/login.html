@@ -3,23 +3,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link th:href="@{webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/css/base.css}" rel="stylesheet" type="text/css">
+	<script th:href="@{webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
     <title>ログイン画面</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
-   <p style="text-align: center;">ログイン画面</p>
-   <form class="form-signin" th:action="@{/login}" method="POST">
-        <div th:if="${showErrorMsg}" class="alert alert-danger" role="alert" th:text="${errorMsg}"></div>
-        <div th:if="${showLogoutedMsg}" class="alert alert-success" role="alert" th:text="#{todo.login.logouted}"></div>
+<div>
+   <p class="login-title">ログイン画面</p>
+   <form class="login-form" th:action="@{/login}" method="POST">
+        <div th:if="${showErrorMsg}" class="alert" role="alert" th:text="${errorMsg}"></div>
+        <div th:if="${showLogoutedMsg}" class="alert" role="alert" th:text="#{todo.login.logouted}"></div>
         <p>
-          <input type="text" id="username" name="username" class="form-control" placeholder="ユーザID" required autofocus>
+          <input type="text" id="username" name="username" class="login-text" placeholder="ユーザID" required autofocus>
         </p>
         <p>
-          <input type="password" id="password" name="password" class="form-control" placeholder="パスワード" required autocomplete="off">
+          <input type="password" id="password" name="password" class="login-text" placeholder="パスワード" required autocomplete="off">
         </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
+        <button class="login-button" type="submit">ログイン</button>
    </form>
 </div>
 </body>

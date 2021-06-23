@@ -11,35 +11,54 @@
 </head>
 <body>
 	<div th:fragment="timeline" th:remove="tag">
-		<table th:id="empTable"> 
-			<tr>
-				<td th:if="${result} neq null" th:text="'検索結果' + ${result} + '件'"></td>
-			</tr>
-			<tr>
-				<th>社員番号</th>
-				<th>氏名</th>
-				<th>生年月日</th>
-				<th>部署</th>
-			</tr>
-			<tr th:class="empList" th:each="employee, empStat : ${employees}" th:object="${employee}">
-				<td class="id" th:text="*{id}"></td>
-				<td class="name" th:text="*{name}"></td>
-				<td class="birthdate" th:text="*{birthdate}"></td>
-				<td class="division" th:text="*{division}"></td>
-				<td>
-					<form th:action="@{/update}" th:object="${updateForms}" method="POST">
-						<input type="hidden" name="updateForms[0].id" th:value="${employee.id}">
-						<input type="hidden" name="updateForms[0].name" th:value="${employee.name}">
-						<input type="hidden" name="updateForms[0].birthdate" th:value="${employee.birthdate}">
-						<input type="hidden" name="updateForms[0].division" th:value="${employee.division}">
-						<input type="submit" value="更新">
-					</form>
-				</td>
-				<td>
-					<input type="button" class="ajax_delete" value="削除" th:name="*{id}">
-				</td>
-			</tr>
-		</table>
+		<div id="empTable">
+			<div class="flex-center">
+				<p class="search-result">
+					<span class="result-num" th:if="${result} neq null" th:text="'検索結果&nbsp;' + ${result} + '&nbsp;件'"></span>
+				</p>
+			</div>
+			<table class="flex-center"> 
+				<tbody class="flex-culomn">
+					<tr class="flex-center">
+						<th class="list-hidden"></th>
+						<th class="list-hidden"></th>
+						<th class="list-header">社員番号</th>
+						<th class="list-header">氏名</th>
+						<th class="list-header">生年月日</th>
+						<th class="list-header">部署</th>
+						<th class="list-hidden"></th>
+						<th class="list-hidden"></th>
+					</tr>
+					<tr th:class="empList" th:each="employee, empStat : ${employees}" th:object="${employee}">
+						<td class="list-hidden"></td>
+						<td class="list-hidden"></td>
+						<td class="id list-items" th:if="${empStat.even}" th:text="*{id}"></td>
+						<td class="id list-items2" th:if="${empStat.odd}" th:text="*{id}"></td>
+						<td class="name list-items" th:if="${empStat.even}" th:text="*{name}"></td>
+						<td class="name list-items2" th:if="${empStat.odd}" th:text="*{name}"></td>
+						<td class="birthdate list-items" th:if="${empStat.even}" th:text="*{birthdate}"></td>
+						<td class="birthdate list-items2" th:if="${empStat.odd}" th:text="*{birthdate}"></td>
+						<td class="division list-items" th:if="${empStat.even}" th:text="*{division}"></td>
+						<td class="division list-items2" th:if="${empStat.odd}" th:text="*{division}"></td>
+						<td>
+							<form th:action="@{/update}" th:object="${updateForms}" method="POST">
+								<input type="hidden" name="updateForms[0].id" th:value="${employee.id}">
+								<input type="hidden" name="updateForms[0].name" th:value="${employee.name}">
+								<input type="hidden" name="updateForms[0].birthdate" th:value="${employee.birthdate}">
+								<input type="hidden" name="updateForms[0].division" th:value="${employee.division}">
+								<input class="item-button2" type="submit" value="更新">
+							</form>
+						</td>
+						<td>
+							<input class="item-button2 ajax_delete" type="button" value="削除" th:name="*{id}">
+						</td>
+					</tr>
+					<tr>
+						<td class="list-hidden2"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

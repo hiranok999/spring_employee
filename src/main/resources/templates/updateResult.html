@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{common/base}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
-<script type="text/javascript" th:src="@{webjars/jquery/3.5.0/jquery.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/search.js}"></script>
-<title>検索画面</title>
+	<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
+	<script type="text/javascript" th:src="@{webjars/jquery/3.5.0/jquery.min.js}"></script>
+	<link th:href="@{/css/base.css}" rel="stylesheet" type="text/css">
+	<title>更新結果画面</title>
 </head>
 <body>
-	<div layout:fragment="content">
-		<p>更新完了</p>
-	</div>
-	<div layout:fragment="footer">
-		<p>
-			<a th:href="@{/}">HOME</a>
-		</p>
-	</div>
+	<header>
+		<p class="header-title">更新結果画面</p>
+		<a th:href="@{/logout}">
+			<button class="logout-button" type="button">ログアウト</button>
+		</a>
+	</header>
+		<p class="result-msg2">更新完了</p>
+		<a class="flex-center" th:href="@{/}">
+			<button class="item-button3" type="button">メニューへ</button>
+		</a>
 </body>
 </html>

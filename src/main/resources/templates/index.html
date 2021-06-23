@@ -1,19 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{common/base}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
-<title>メニュー画面</title>
+	<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
+	<link th:href="@{webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/css/base.css}" rel="stylesheet" type="text/css">
+	<title>メニュー画面</title>
 </head>
 <body>
-	<div layout:fragment="content">
-		<p>
-			<a th:href="@{/search}">検索</a>
-		</p>
-		<p>
-			<a th:href="@{/register}">登録</a>
-		</p>
+	<header class="header">
+			<p class="header-title">メニュー画面</p>
+			<a th:href="@{/logout}">
+				<button class="logout-button" type="button">ログアウト</button>
+			</a>
+	</header>
+	<div class="flex-center">
+		<a th:href="@{/search}">
+			<button class="item-button" type="button">検索</button>
+		</a>
+		<a th:href="@{/register}">
+			<button class="item-button" type="button">登録</button>
+		</a>
 	</div>
+	<footer>
+	</footer>
 </body>
 </html>

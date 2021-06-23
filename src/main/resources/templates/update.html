@@ -1,50 +1,65 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{common/base}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
-<script type="text/javascript" th:src="@{webjars/jquery/3.5.0/jquery.min.js}"></script>
-<title>検索画面</title>
+	<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
+	<script type="text/javascript" th:src="@{webjars/jquery/3.5.0/jquery.min.js}"></script>
+	<link th:href="@{/css/base.css}" rel="stylesheet" type="text/css">
+	<title>更新画面</title>
 </head>
 <body>
-	<div layout:fragment="content">
-		<form id="update" th:action="@{/updateResult}" method="POST" th:object="${updateForms}">
-			<table>
-				<tr>
-					<td th:text="社員番号："></td>
-					<td><input type="text" name="updateForms[1].id" th:value="*{updateForms[0].id}"></td>
-					<td><input type="hidden" th:field="*{updateForms[0].id}"></td>
-					<td th:if="${#fields.hasErrors('updateForms[1].id')}" th:errors="*{updateForms[1].id}"></td>
+	<header>
+		<a th:href="@{/search}">
+			<button class="back-button" type="button">戻る</button>
+		</a>
+		<p class="header-title">更新画面</p>
+		<a th:href="@{/logout}">
+			<button class="logout-button" type="button">ログアウト</button>
+		</a>
+	</header>
+	<form id="update" class="update-form" th:action="@{/updateResult}" method="POST" th:object="${updateForms}">
+		<table>
+			<tbody>
+				<tr class="flex-column">
+					<td class="flex-center">
+						<span class="heading" th:text="社員番号："></span>
+						<input class="update-text" type="text" name="updateForms[1].id" th:value="*{updateForms[0].id}">
+						<input type="hidden" th:field="*{updateForms[0].id}">
+					</td>
+					<td class="update-warning" th:if="${#fields.hasErrors('updateForms[1].id')}" th:errors="*{updateForms[1].id}"></td>
+				</tr>
+				<tr class="flex-column">
+					<td class="flex-center">
+						<span class="heading" th:text="氏名："></span>
+						<input class="update-text" type="text" name="updateForms[1].name" th:value="*{updateForms[0].name}">
+						<input type="hidden" th:field="*{updateForms[0].name}">
+					</td>
+					<td class="update-warning" th:if="${#fields.hasErrors('updateForms[1].name')}" th:errors="*{updateForms[1].name}"></td>
+				</tr>
+				<tr class="flex-column">
+					<td class="flex-center">
+						<span class="heading" th:text="生年月日："></span>
+						<input class="update-text" type="text" name="updateForms[1].birthdate" th:value="*{updateForms[0].birthdate}">
+						<input type="hidden" th:field="*{updateForms[0].birthdate}">
+					</td>
+					<td class="update-warning" th:if="${#fields.hasErrors('updateForms[1].birthdate')}" th:errors="*{updateForms[1].birthdate}"></td>
 				</tr>
 				<tr>
-					<td th:text="氏名："></td>
-					<td><input type="text" name="updateForms[1].name" th:value="*{updateForms[0].name}"></td>
-					<td><input type="hidden" th:field="*{updateForms[0].name}"></td>
-					<td th:if="${#fields.hasErrors('updateForms[1].name')}" th:errors="*{updateForms[1].name}"></td>
+					<td class="flex-center">
+						<span class="heading" th:text="部署："></span>
+						<input class="update-text" type="text" name="updateForms[1].division" th:value="*{updateForms[0].division}">
+						<input type="hidden" th:field="*{updateForms[0].division}">
+					</td>
 				</tr>
 				<tr>
-					<td th:text="生年月日："></td>
-					<td><input type="text" name="updateForms[1].birthdate" th:value="*{updateForms[0].birthdate}"></td>
-					<td><input type="hidden" th:field="*{updateForms[0].birthdate}"></td>
-					<td th:if="${#fields.hasErrors('updateForms[1].birthdate')}" th:errors="*{updateForms[1].birthdate}"></td>
+					<td class="flex-center">
+						<input class="update-button" type="submit" value="更新">
+					</td>
 				</tr>
-				<tr>
-					<td th:text="部署："></td>
-					<td><input type="text" name="updateForms[1].division" th:value="*{updateForms[0].division}"></td>
-					<td><input type="hidden" th:field="*{updateForms[0].division}"></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="更新"></td>
-				</tr>
-			</table>
-		</form>
-		<p th:if="${msg != null}" th:utext="${msg}"></p>
-	</div>
-	<div layout:fragment="footer">
-		<p>
-			<a th:href="@{/search}">戻る</a>
-		</p>
-	</div>
+			</tbody>
+		</table>
+	</form>
+	<p class="result-msg" th:if="${msg != null}" th:utext="${msg}"></p>
+	<footer>
+	</footer>
 </body>
 </html>

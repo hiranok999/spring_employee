@@ -1,28 +1,6 @@
 'use strict';
 
 $(document).ready(function() {
-//	// 検索時のajax処理
-//	$('#search').submit(function(event) {
-//		// HTMLでの送信をキャンセル
-//		event.preventDefault();
-//
-//		// 操作対象のフォーム要素を取得
-//		var $form = $(this);
-//
-//		// 送信
-//		$.ajax({
-//			url : $form.attr('action'),
-//			type : $form.attr('method'),
-//			data : $form.serialize(),
-//		})
-//		.done(function(data, status, xhr) {
-//			$('#emplist').html(data);
-//		})
-//		.fail(function() {
-//			console.log('fail');
-//		});
-//	});
-
 	// 一覧表示時のajax処理
 	$(document).on('click', '.ajax_allList', function() {
 		$.ajax({

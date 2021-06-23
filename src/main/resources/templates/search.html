@@ -1,39 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{common/base}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
-<script type="text/javascript" th:src="@{webjars/jquery/3.5.0/jquery.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/search.js}"></script>
-<title>検索画面</title>
+	<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
+	<script type="text/javascript" th:src="@{webjars/jquery/3.5.0/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/search.js}"></script>
+	<link th:href="@{/css/base.css}" rel="stylesheet" type="text/css">
+	<title>検索画面</title>
 </head>
 <body>
-	<div layout:fragment="content">
-		<form id="search" th:action="@{/searchResult}" th:object="${searchForm}" method="GET">
-			<table>
-				<tr>
-					<td><input type="radio" th:field="*{searchType}" value="id" th:text="社員番号："></td>
-					<td><input type="text" th:field="*{id}" size=30></td>
-					<td th:if="${#fields.hasErrors('idValid')}" th:errors="*{idValid}"></td>
-				</tr>
-				<tr>
-					<td><input type="radio" th:field="*{searchType}" value="name" th:text="氏名："></td>
-					<td><input type="text" th:field="*{name}" size=30></td>
-					<td th:if="${#fields.hasErrors('nameValid')}" th:errors="*{nameValid}"></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="検索"></td>
-				</tr>
-			</table>
-			<input type="button" class="ajax_allList" value="一覧表示">
-		</form>
-		<div th:replace="list :: timeline"></div>
-	</div>
-	<div layout:fragment="footer">
-		<p>
-			<a th:href="@{/}">戻る</a>
-		</p>
-	</div>
+	<header>
+		<a th:href="@{/}">
+			<button class="back-button" type="button">戻る</button>
+		</a>
+		<p class="header-title">検索画面</p>
+		<a th:href="@{/logout}">
+			<button class="logout-button" type="button">ログアウト</button>
+		</a>
+	</header>
+	<form id="search" class="search-form" th:action="@{/searchResult}" th:object="${searchForm}" method="GET">
+		<table>
+			<tr class="flex-column">
+				<td class="flex-center">
+					<input class="search-radio" type="radio" th:field="*{searchType}" value="id">
+					<span class="heading" th:text="社員番号："></span>
+					<input class="search-text" type="text" th:field="*{id}" size=30>
+				</td>
+				<td class="search-warning" th:if="${#fields.hasErrors('idValid')}" th:errors="*{idValid}"></td>
+			</tr>
+			<tr class="flex-column">
+				<td class="flex-center">
+					<input class="search-radio" type="radio" th:field="*{searchType}" value="name">
+					<span class="heading" th:text="氏名："></span>
+					<input class="search-text" type="text" th:field="*{name}" size=30>
+				</td>
+				<td class="search-warning" th:if="${#fields.hasErrors('nameValid')}" th:errors="*{nameValid}"></td>
+			</tr>
+			<tr class="flex-center">
+				<td><input class="search-button" type="submit" value="検索"></td>
+				<td>
+					<input class="search-button ajax_allList" type="button" value="一覧表示">
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div th:replace="list :: timeline"></div>
+	<footer>
+	</footer>
 </body>
 </html>

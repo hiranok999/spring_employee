@@ -1,41 +1,57 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{common/base}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
-<title>登録画面</title>
+	<meta http-equiv="Content-Type" content="text/html; " charset="UTF-8">
+	<link th:href="@{webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/css/base.css}" rel="stylesheet" type="text/css">
+	<title>登録画面</title>
 </head>
 <body>
-	<div layout:fragment="content">
-		<form th:action="@{/register}" th:object="${employeeModel}" method="Post">
-			<table>
-				<tr>
-					<td><span>社員番号：</span><input type="text" th:field="*{id}"></td>
-					<td th:if="${#fields.hasErrors('*{id}')}" th:errors="*{id}"></td>
-				</tr>
-				<tr>
-					<td><span>氏名：</span><input type="text" th:field="*{name}"></td>
-					<td th:if="${#fields.hasErrors('*{name}')}" th:errors="*{name}"></td>
-				</tr>
-				<tr>
-					<td><span>生年月日：</span><input type="text" th:field="*{birthdate}"></td>
-					<td th:if="${#fields.hasErrors('*{birthdate}')}" th:errors="*{birthdate}"></td>
-				</tr>
-				<tr>
-					<td><span>部署：</span><input type="text" th:field="*{division}"></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="登録"></td>
-				</tr>
-			</table>
-		</form>
-		<p th:text="${result}"></p>
-	</div>
-	<div layout:fragment="footer">
-		<p>
-			<a th:href="@{/}">戻る</a>
-		</p>
-	</div>
+	<header class="header">
+		<a th:href="@{/}">
+			<button class="back-button" type="button">戻る</button>
+		</a>
+		<p class="header-title">登録画面</p>
+		<a th:href="@{/logout}">
+			<button class="logout-button" type="button">ログアウト</button>
+		</a>
+	</header>
+	<form class="register-form" th:action="@{/register}" th:object="${employeeModel}" method="Post">
+		<table>
+			<tr class="flex-column">
+				<td class="flex-center">
+					<span class="heading">社員番号：</span>
+					<input class="register-text" type="text" th:field="*{id}">
+				</td>
+				<td class="register-warning" th:if="${#fields.hasErrors('*{id}')}" th:errors="*{id}"></td>
+			</tr>
+			<tr class="flex-column">
+				<td class="flex-center">
+					<span class="heading">氏名：</span>
+					<input class="register-text" type="text" th:field="*{name}">
+				</td>
+				<td class="register-warning" th:if="${#fields.hasErrors('*{name}')}" th:errors="*{name}"></td>
+			</tr>
+			<tr class="flex-column">
+				<td class="flex-center">
+					<span class="heading">生年月日：</span>
+					<input class="register-text" type="text" th:field="*{birthdate}">
+				</td>
+				<td class="register-warning" th:if="${#fields.hasErrors('*{birthdate}')}" th:errors="*{birthdate}"></td>
+			</tr>
+			<tr class="flex-column">
+				<td class="flex-center">
+					<span class="heading">部署：</span>
+					<input class="register-text" type="text" th:field="*{division}">
+				</td>
+			</tr>
+			<tr>
+				<td><input class="register-button" type="submit" value="登録"></td>
+			</tr>
+		</table>
+	</form>
+	<p class="result-msg" th:text="${result}"></p>
+	<footer>
+	</footer>
 </body>
 </html>
