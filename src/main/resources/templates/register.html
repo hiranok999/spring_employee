@@ -7,7 +7,7 @@
 	<title>登録画面</title>
 </head>
 <body>
-	<header class="header">
+	<header>
 		<a th:href="@{/}">
 			<button class="back-button" type="button">戻る</button>
 		</a>
@@ -50,7 +50,7 @@
 			</tr>
 		</table>
 	</form>
-	<p class="result-msg" th:text="${result}"></p>
+	<p class="result-msg" th:utext="${result}"></p>
 	<footer>
 	</footer>
 </body>

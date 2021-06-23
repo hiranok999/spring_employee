@@ -55,11 +55,12 @@ public class UpdateController {
 		empModel.setBirthdate(newInfo.getBirthdate());
 		empModel.setDivision(newInfo.getDivision());
 
-		// 従業員テーブルを更新した場合、更新結果画面を表示する
-		boolean updateResult = empService.updateEmployee(empModel);
-		if (updateResult) {
+		try {
+			// 従業員テーブルを更新した場合、更新結果画面を表示する
+			empService.updateEmployee(empModel);
 			return "updateResult";
-		} else {
+		} catch(Exception e) {
+			model.addAttribute("msg", "更新できませんでした。<br>入力内容を確認して下さい。");
 			return "update";
 		}
 	}

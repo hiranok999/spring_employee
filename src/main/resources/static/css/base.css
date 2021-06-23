@@ -27,9 +27,9 @@ header {
 	color: #fff;
 	font-family: fantasy;
 	text-align: center;
+	line-height: 80px;
 	background-color: #2a3644;
 	height: 70px;
-	padding-top: 20px;
 	margin: 0px;
 }
 .login-title {
@@ -144,10 +144,11 @@ header {
 	color: #fff;
 	font-size: 1.2rem;
 	font-family: fantasy;
-	margin: auto;
+	margin: auto 0px auto 0px;
 	padding-top: 10px;
 	width: 120px;
 	text-align: left;
+	line-height: 25px;
 }
 .register-form {
 	margin: 70px auto;
@@ -157,7 +158,7 @@ header {
 	width: 550px;
 }
 .register-text {
-	color: #fff; 
+	color: #fff;
 	font-size: 1.2rem;
 	background-color: rgba(0, 0, 0, 0.25);
 	display: block;
@@ -185,8 +186,8 @@ header {
 	color: red;
 	font-weight: bold;
 	text-align: left;
-	width: 470px;
-	padding-left: 135px;
+	width: 440px;
+	padding-left: 120px;
 }
 .back-button {
 	color: #fff; 
@@ -226,6 +227,7 @@ header {
 	margin: auto;
 	width: 35px;
 	text-align: left;
+	line-height: 25px;
 }
 .search-text {
 	color: #fff; 
@@ -237,6 +239,7 @@ header {
 	margin-bottom: 5px;
 	width: 320px;
 	outline: none;
+	line-height: 25px;
 }
 .search-button {
 	color: #fff; 
@@ -251,13 +254,14 @@ header {
 	padding: 5px;
 	width: 120px;
 	font-size: 1.2em;
+	line-height: 30px;
 }
 .search-warning {
 	color: red;
 	font-weight: bold;
 	text-align: left;
-	width: 480px;
-	padding-left: 160px;
+	width: 475px;
+	padding-left: 155px;
 }
 .search-result {
 	height: 35px;
@@ -348,6 +352,6 @@ table {
 	color: red;
 	font-weight: bold;
 	text-align: left;
-	width: 480px;
-	padding-left: 160px;
+	width: 440px;
+	padding-left: 140px;
 }
